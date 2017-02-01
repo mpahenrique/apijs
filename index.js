@@ -65,7 +65,7 @@ function _delete(serviceName, data, fallback){
 }
 
 function $tryFallback(method, url, fallback, data, err){
-    if (typeof err === 'object' ) err.message = (fallback) ? "Service error, trying the fallback" : "";
+    if (typeof err === 'object' ) err.message = (fallback) ? "Service error, trying fallback" : "";
     console.error('status: ', err.status, '\n', 'data: ', err.data, '\n', 'message: ', err.message, '\n', 'url: ', err.url)
     if (fallback) {
         return $both(method, url, data);
