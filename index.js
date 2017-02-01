@@ -2,23 +2,24 @@ function $both(method, url, data, fallback){
     
     return new Promise(function(resolve, reject){
 
-        data = data ? $jsonToFormData(data) : '';
-        if(method !== 'GET') data = data.replace(/^\?/, '');
+        if (method === 'DELETE') {fallback = data; data = '';};
+        data = (method !== 'PUT' && method !== 'PATCH') ? $jsonToFormData(data) : data;
+        if(method === 'POST') data = data.replace(/^\?/, '');
         if(!url) return fail('Service name unknown');
 
         try {
             var xhr = new XMLHttpRequest();
             url = (method !== 'GET') ? url : url + data;
             xhr.open(method, url);
-            method == 'POST' && xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
-            xhr.onreadystatechange = function(){
+            method === 'POST' && xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+            (method === 'PUT' ||  method === 'PATCH') && xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function(){
                 if(xhr.readyState != 4) return;
                 if(xhr.status == 200 || xhr.status == 201) return resolve(xhr.responseText);
                 if(!!fallback && xhr.status != 200) return resolve($tryFallback(method, (fallback || url), (!!fallback ? true : false), data, { 'status' : xhr.status, 'data' : xhr.responseText, 'url' : url }));
                 return fail({ 'status' : xhr.status, 'data' : xhr.responseText, 'url' : url });
             }
-            console.log('==> ', method, data, typeof data, url);
-            xhr.send(data);
+            xhr.send((typeof data === 'object') ? JSON.stringify(data) : data);
         } catch (err) {
             var xdr = new XDomainRequest();
             xdr.open(method, url + data);
@@ -99,46 +100,3 @@ try {
     // using like a library
     window.apijs = apijs;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// apijs.get('https://jsonplaceholder.typicode.com/posts/null', {'id':'1'}, 'https://jsonplaceholder.typicode.com/posts/').then(function(resolve){
-//     console.log("GET ==> then :: ", resolve);
-// }, function(reject){
-//     console.log("GET ==> reject :: ", reject);
-// });
-apijs.post('https://jsonplaceholder.typicode.com/posts/null', {title: 'foo',body: 'bar',userId: 1}, 'https://jsonplaceholder.typicode.com/posts/').then(function(resolve){
-    console.log("POST ==> then :: ", resolve);
-}, function(reject){
-    console.log("POST ==> reject :: ", reject);
-});
-apijs.put('https://jsonplaceholder.typicode.com/posts/null', {id: 1,title: 'foo',body: 'bar',userId: 1}, 'https://jsonplaceholder.typicode.com/posts/1').then(function(resolve){
-    console.log("PUT ==> then :: ", resolve);
-}, function(reject){
-    console.log("PUT ==> reject :: ", reject);
-});
