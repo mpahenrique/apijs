@@ -1,10 +1,13 @@
-# XHRT (XMLHttpRequest Transfer)
+# [XHRT (XMLHttpRequest Transfer)](https://www.npmjs.com/package/xhrt)
+
+[![npm version](https://badge.fury.io/js/xhrt.svg)](https://badge.fury.io/js/xhrt)
+
 The XHRTransfer allows you to send a service method passing a URL, a Data and a fallback, if necessary.
 
 ## Using XHRT you can:
   - Send REST methods;
   - Pass data values to a method;
-  - Pass a URL fallback if the first fail;
+  - Pass a URL fallback if the first url fails;
 
 ### Installation
 #### Using like a library
