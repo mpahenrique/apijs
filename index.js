@@ -103,5 +103,5 @@ try {
     module.exports = init();
 } catch(err){
     // using like a library
-    window.apijs = init();
+    window.xhrt = init();
 }

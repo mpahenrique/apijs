@@ -1,7 +1,7 @@
-# APIJS
-The APIJS allows you to send a service method passing a URL, a Data and a fallback, if necessary.
+# XHRT (XMLHttpRequest Transfer)
+The XHRTransfer allows you to send a service method passing a URL, a Data and a fallback, if necessary.
 
-## Using APIJS you can:
+## Using XHRT you can:
   - Send REST methods;
   - Pass data values to a method;
   - Pass a URL fallback if the first fail;
@@ -9,32 +9,32 @@ The APIJS allows you to send a service method passing a URL, a Data and a fallba
 ### Installation
 #### Using like a library
 ```sh
-$ git clone https://github.com/mpahenrique/apijs.git
+$ git clone https://github.com/mpahenrique/xhrt.git
 ```
 ```HTML
 <body>
 ...
 ...
-<script src="path/to/apijs/index.js"></script>
+<script src="path/to/xhrt/index.js"></script>
 </body>
 ```
 
 #### Using like a module
 ```sh
-$ npm install apijs --save
+$ npm install xhrt --save
 ```
 
 ### Usage
 #### Using like a module
 ```js
-var apijs = require('apijs');
+var xhrt = require('xhrt');
 ```
 
 ### Methods
 #### GET
 ###### Usage:
 ```
-apijs.get(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
+xhrt.get(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
     Callback();
     // Return success;
 }, function(reject){
@@ -44,7 +44,7 @@ apijs.get(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
 ```
 ###### Example:
 ```
-apijs.get('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
+xhrt.get('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
     console.log(resolve);
 }, function(reject){
     console.log(reject);
@@ -54,7 +54,7 @@ apijs.get('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
 #### POST
 ###### Usage:
 ```
-apijs.post(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
+xhrt.post(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
     Callback();
     // Return success;
 }, function(reject){
@@ -64,7 +64,7 @@ apijs.post(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
 ```
 ###### Example:
 ```
-apijs.post('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
+xhrt.post('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
     console.log(resolve);
 }, function(reject){
     console.log(reject);
@@ -74,7 +74,7 @@ apijs.post('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve)
 #### PUT
 ###### Usage:
 ```
-apijs.put(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
+xhrt.put(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
     Callback();
     // Return success;
 }, function(reject){
@@ -84,7 +84,7 @@ apijs.put(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
 ```
 ###### Example:
 ```
-apijs.put('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
+xhrt.put('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
     console.log(resolve);
 }, function(reject){
     console.log(reject);
@@ -94,7 +94,7 @@ apijs.put('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
 #### PATCH
 ###### Usage:
 ```
-apijs.patch(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
+xhrt.patch(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
     Callback();
     // Return success;
 }, function(reject){
@@ -104,7 +104,7 @@ apijs.patch(URL: string, DATA: object, FALLBACK: string).then(function(resolve){
 ```
 ###### Example:
 ```
-apijs.patch('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
+xhrt.patch('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve){
     console.log(resolve);
 }, function(reject){
     console.log(reject);
@@ -114,7 +114,7 @@ apijs.patch('URL_TO_CALL', data_object, 'URL_TO_FALLBACK').then(function(resolve
 #### DELETE
 ###### Usage:
 ```
-apijs.delete(URL: string, FALLBACK: string).then(function(resolve){
+xhrt.delete(URL: string, FALLBACK: string).then(function(resolve){
     Callback();
     // Return success;
 }, function(reject){
@@ -124,7 +124,7 @@ apijs.delete(URL: string, FALLBACK: string).then(function(resolve){
 ```
 ###### Example:
 ```
-apijs.get('URL_TO_CALL', 'URL_TO_FALLBACK').then(function(resolve){
+xhrt.get('URL_TO_CALL', 'URL_TO_FALLBACK').then(function(resolve){
     console.log(resolve);
 }, function(reject){
     console.log(reject);
