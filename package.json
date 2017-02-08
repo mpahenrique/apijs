@@ -1,6 +1,6 @@
 {
-  "name": "apijs",
-  "version": "1.0.0",
+  "name": "xhrt",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mpahenrique/apijs.git"
+    "url": "git@github.com:mpahenrique/xhrt.git"
   },
   "author": [
     { 
@@ -22,7 +22,7 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mpahenrique/apijs/issues"
+    "url": "https://github.com/mpahenrique/xhrt/issues"
   },
-  "homepage": "https://github.com/mpahenrique/apijs#readme"
+  "homepage": "https://github.com/mpahenrique/xhrt#readme"
 }
