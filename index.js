@@ -13,6 +13,7 @@ function init(){
 
             try {
                 var xhr = new XMLHttpRequest();
+                if(data && url.match('?')) data.replace('?', '')
                 url = (method !== 'GET') ? url : url + data;
                 xhr.open(method, url);
                 method === 'POST' && xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
