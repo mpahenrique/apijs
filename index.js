@@ -13,7 +13,7 @@ function init(){
 
             try {
                 var xhr = new XMLHttpRequest();
-                if(data && url.match('?')) data = data.replace('?', '')
+                if(data && url.match('?')) data.replace('?', '&')
                 url = (method !== 'GET') ? url : url + data;
                 xhr.open(method, url);
                 method === 'POST' && xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
@@ -79,7 +79,7 @@ function init(){
 
     function $jsonToFormData(obj){
         if (typeof obj !== 'object') return obj;
-        var paramString = '?&';
+        var paramString = '';
         for (var key in obj) {
             var value = obj[key];
             if(obj[key] instanceof Array){

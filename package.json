@@ -1,6 +1,6 @@
 {
   "name": "xhrt",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Send a service method passing a URL, a Data and a fallback.",
   "main": "index.js",
   "scripts": {
