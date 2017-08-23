@@ -79,7 +79,7 @@ function init(){
 
     function $jsonToFormData(obj){
         if (typeof obj !== 'object') return obj;
-        var paramString = '?';
+        var paramString = '?&';
         for (var key in obj) {
             var value = obj[key];
             if(obj[key] instanceof Array){
