@@ -14,13 +14,13 @@ function init(){
 
             try {
                 var xhr = new XMLHttpRequest();
-                if(contentType) {
-                    xhr.setRequestHeader('Content-Type', contentType);                
-                }
                 if(data && url.match(/^\?/)) data.replace(/^\?/, '&')
                 url = (method !== 'GET') ? url : url + data;
                 xhr.open(method, url);
-                method === 'POST' || method === 'PUT' || method === 'PATCH' && xhr.setRequestHeader('Content-Type', contentType || 'application/x-www-form-urlencoded;charset=UTF-8');
+                
+                if(method !== 'GET') {
+                    xhr.setRequestHeader('Content-Type', contentType || 'application/x-www-form-urlencoded;charset=UTF-8');
+                }
                 xhr.onload = function(){
                     if(xhr.readyState != 4) return;
                     if(xhr.status == 200 || xhr.status == 201) return resolve(xhr.responseText);
