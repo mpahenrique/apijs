@@ -2,7 +2,7 @@
 
 function init(){
 
-    function $both(method, url, data, fallback){
+    function $both(method, url, data, fallback, contentType){
     
         return new Promise(function(resolve, reject){
 
@@ -11,13 +11,16 @@ function init(){
             if(method === 'POST') data = data.replace(/^\?/, '');
             if(!url) return fail('Service name unknown');
 
+            if(contentType) {
+                xhr.setRequestHeader('Content-Type', contentType);                
+            }
+
             try {
                 var xhr = new XMLHttpRequest();
                 if(data && url.match(/^\?/)) data.replace(/^\?/, '&')
                 url = (method !== 'GET') ? url : url + data;
                 xhr.open(method, url);
-                method === 'POST' && xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
-                (method === 'PUT' ||  method === 'PATCH') && xhr.setRequestHeader('Content-Type', 'application/json');
+                method === 'POST' || method === 'PUT' || method === 'PATCH' && xhr.setRequestHeader('Content-Type', contentType || 'application/x-www-form-urlencoded;charset=UTF-8');
                 xhr.onload = function(){
                     if(xhr.readyState != 4) return;
                     if(xhr.status == 200 || xhr.status == 201) return resolve(xhr.responseText);
@@ -49,24 +52,24 @@ function init(){
 
     }
 
-    function _get(serviceName, data, fallback){
-        return $both('GET', serviceName, data, fallback);
+    function _get(serviceName, data, fallback, contentType){
+        return $both('GET', serviceName, data, fallback, contentType);
     }
 
-    function _post(serviceName, data, fallback){
-        return $both('POST', serviceName, data, fallback);
+    function _post(serviceName, data, fallback, contentType){
+        return $both('POST', serviceName, data, fallback, contentType);
     }
 
-    function _put(serviceName, data, fallback){
-        return $both('PUT', serviceName, data, fallback);
+    function _put(serviceName, data, fallback, contentType){
+        return $both('PUT', serviceName, data, fallback, contentType);
     }
 
-    function _patch(serviceName, data, fallback){
-        return $both('PATCH', serviceName, data, fallback);
+    function _patch(serviceName, data, fallback, contentType){
+        return $both('PATCH', serviceName, data, fallback, contentType);
     }
 
-    function _delete(serviceName, data, fallback){
-        return $both('DELETE', serviceName, data, fallback);
+    function _delete(serviceName, data, fallback, contentType){
+        return $both('DELETE', serviceName, data, fallback, contentType);
     }
 
     function $tryFallback(method, url, fallback, data, err){
