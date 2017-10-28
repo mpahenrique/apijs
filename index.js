@@ -11,12 +11,12 @@ function init(){
             if(method === 'POST') data = data.replace(/^\?/, '');
             if(!url) return fail('Service name unknown');
 
-            if(contentType) {
-                xhr.setRequestHeader('Content-Type', contentType);                
-            }
 
             try {
                 var xhr = new XMLHttpRequest();
+                if(contentType) {
+                    xhr.setRequestHeader('Content-Type', contentType);                
+                }
                 if(data && url.match(/^\?/)) data.replace(/^\?/, '&')
                 url = (method !== 'GET') ? url : url + data;
                 xhr.open(method, url);
