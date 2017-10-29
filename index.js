@@ -7,7 +7,7 @@ function init(){
         return new Promise(function(resolve, reject){
 
             if (method === 'DELETE') {fallback = data; data = '';};
-            data = (method !== 'PUT' && method !== 'PATCH') ? $jsonToFormData(data) : data;
+            data = $jsonToFormData(data);
             if(method === 'POST') data = data.replace(/^\?/, '');
             if(!url) return fail('Service name unknown');
 
