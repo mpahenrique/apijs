@@ -8,7 +8,7 @@ function init(){
 
             if (method === 'DELETE') {fallback = data; data = '';};
             data = $jsonToFormData(data);
-            if(method === 'POST') data = data.replace(/^\?/, '');
+            if(method === 'POST' || method === 'PUT' || method === 'PATCH') data = data.replace(/^\?/, '');
             if(!url) return fail('Service name unknown');
 
 
